@@ -1,4 +1,4 @@
-def filter_by_state(data, state="EXECUTED"):
+def filter_by_state(data: list[dict[str, int]], state: str = "EXECUTED") -> list[dict[str, int]]:
     result = []  # Создаем пустой список для хранения результатов
     for item in data:
         if item["state"] == state:
@@ -23,14 +23,14 @@ canceled_transactions = filter_by_state(data, "CANCELED")
 print(canceled_transactions)
 
 
-def sort_by_date(transactions, descending=True):
+def sort_by_date(transactions: list[dict[str]], ascending = True) -> list[dict[str]]:
     # Мы создаем новый список, куда будем добавлять отсортированные элементы
     sorted_transactions = []
 
-    if descending:
-        sorted_transactions = sorted(transactions, key=lambda x:['date'],reverse=True)
+    if ascending:
+        sorted_transactions = sorted(transactions, key=lambda x:{'date'})
     else:
-        sorted_transactions = sorted(transactions, key=lambda x:['date'])
+        sorted_transactions = sorted(transactions, key=lambda x:{'date'})
 
     return sorted_transactions
 
